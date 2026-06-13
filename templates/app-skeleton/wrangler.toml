@@ -1,0 +1,25 @@
+name = "app-skeleton"
+main = ".open-next/worker.js"
+compatibility_date = "2024-12-30"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "app-skeleton-db"
+database_id = "PLACEHOLDER_D1_ID"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "PLACEHOLDER_KV_CACHE_ID"
+
+[[kv_namespaces]]
+binding = "SESSION"
+id = "PLACEHOLDER_KV_SESSION_ID"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "app-skeleton-assets"
+
+[[analytics_engine_datasets]]
+binding = "PERF"
+dataset = "app_skeleton_perf"

@@ -11,7 +11,7 @@ description: 성능 3층(관측 배선·perf 게이트·최적화 루프) 전담
 
 ## 입력 (Read from _workspace)
 
-- `_workspace/planning/prd.md` — **perf 예산**(p95, LCP/INP/CLS, 번들 KB) — 게이트 임계값 출처
+- `_workspace/plan/prd.md` — **perf 예산**(p95, LCP/INP/CLS, 번들 KB) — 게이트 임계값 출처
 - `_workspace/arch/rendering-matrix.md` — 라우트별 전략·예산
 - `_workspace/arch/cache-topology.md` — 캐시 계층(최적화 시 활용)
 - `_workspace/impl/routes-built.md` · `data-layer.md` — 스캔 대상 엔드포인트

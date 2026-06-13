@@ -14,7 +14,7 @@ description: D1/Drizzle 스키마·마이그레이션, KV/Cache 캐시 계층, b
 - `_workspace/arch/bindings.md` — DB/CACHE/SESSION/BUCKET/PERF 바인딩
 - `_workspace/arch/cache-topology.md` — 캐시 계층 키 스킴·TTL·무효화 SSOT
 - `_workspace/arch/rendering-matrix.md` — 어떤 라우트가 캐시/세션을 쓰는지
-- `_workspace/planning/prd.md` · `_workspace/planning/fsd-map.md` — 엔티티·인증 요구
+- `_workspace/plan/prd.md` · `_workspace/plan/fsd-map.md` — 엔티티·인증 요구
 - `_workspace/pipeline-status.md`
 
 ## 출력 (Write to _workspace / 코드 산출 위치)

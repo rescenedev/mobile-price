@@ -17,8 +17,8 @@ description: Cloudflare 토폴로지·렌더링 전략·배포의 단일 두뇌.
 ## 입력 (Read from _workspace)
 
 - `_workspace/spec.md` — 앱 개요, 라우트 후보
-- `_workspace/planning/prd.md` — perf 예산(p95, LCP/INP/CLS, 번들), 개인화/인증 요구
-- `_workspace/planning/fsd-map.md` — feature/entity/route 목록
+- `_workspace/plan/prd.md` — perf 예산(p95, LCP/INP/CLS, 번들), 개인화/인증 요구
+- `_workspace/plan/fsd-map.md` — feature/entity/route 목록
 - `_workspace/design/` — 정적/동적 화면 구분 힌트
 - `_workspace/pipeline-status.md` — 현재 Phase 확인
 

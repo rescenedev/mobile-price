@@ -18,7 +18,7 @@ description: "Next.js App Router 페이지·컴포넌트를 shadcn/ui + Tailwind
 - `_workspace/spec.md` — 전 섹션 + 모든 `*_notes` + `project.context` (있으면 최우선)
 - `_workspace/design/` — 디자인 토큰(색/타이포/스페이싱/radius), 컴포넌트 명세, **Do's & Don'ts 가드레일** (design-architect 산출물)
 - `_workspace/arch/rendering-matrix.md` — 내가 채우는 페이지의 렌더링 전략(SSG/ISR/SSR-edge)·캐시 계층. 페이지 컴포넌트의 `runtime`/`revalidate`/`dynamic`은 여기 선언과 **반드시 일치**
-- `_workspace/02_product_plan.md` — 유저 스토리·화면 목록·perf 예산(번들/LCP)
+- `_workspace/plan/prd.md` — 유저 스토리·화면 목록·perf 예산(번들/LCP)
 - `edge-data-integrator`가 노출한 훅/서버 함수 시그니처 (`src/features/**/{api,hooks,server}`의 barrel)
 
 ## 출력 (Write)

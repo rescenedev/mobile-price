@@ -13,8 +13,8 @@ description: App Router 라우트·Route Handler·Server Action·feature 모듈 
 
 - `_workspace/arch/rendering-matrix.md` — **라우트별 전략 SSOT(필독)**
 - `_workspace/arch/bindings.md` — 사용 가능한 바인딩
-- `_workspace/planning/fsd-map.md` — feature/route 목록, 책임 경계
-- `_workspace/planning/prd.md` — 엔드포인트 동작·입력 스키마
+- `_workspace/plan/fsd-map.md` — feature/route 목록, 책임 경계
+- `_workspace/plan/prd.md` — 엔드포인트 동작·입력 스키마
 - `_workspace/pipeline-status.md`
 
 ## 출력 (Write to _workspace / 코드 산출 위치)

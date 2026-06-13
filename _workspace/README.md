@@ -8,14 +8,16 @@ _workspace/
 ├── pipeline-status.md          # 7-Phase 진행추적 (단일 상태표)
 ├── spec.md                     # Phase 0 — 콘셉트·타깃·제약
 ├── idea/                       # Phase 1 — idea-researcher
-├── plan/                       # Phase 2 — prd.md · kpis.md (perf 예산 포함)
+├── plan/                       # Phase 2 — prd.md · kpis.md (perf 예산) · fsd-map.md
 ├── spec/                       # Phase 2.5 — 모듈별 task 분해
 ├── design/                     # Phase 3 — shadcn 토큰·테마·레이아웃
 ├── arch/                       # Phase 3.5 — cf-architect (핵심 계약)
 │   ├── rendering-matrix.md     # ★ 라우트별 렌더링/캐시 단일 출처
 │   ├── bindings.md             # D1/KV/R2/AE 바인딩 계획
 │   └── cache-topology.md       # 캐시 계층 설계
-└── qa/                         # Phase 5+ — code-review · inspection · perf-gate · fix-loop-N
+├── impl/                       # Phase 4 — 구현 노트 (routes-built.md · data-layer.md)
+├── qa/                         # Phase 5+ — code-review · inspection · perf-gate · fix-loop-N
+└── deploy/                     # Phase 7 — deploy-report.md (리소스 ID·배포 URL·헬스)
 ```
 
 ## 규칙

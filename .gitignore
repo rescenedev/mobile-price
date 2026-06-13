@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.open-next/
+.wrangler/
+dist/
+*.log
+.dev.vars
+.env*.local
+.DS_Store
+coverage/
+*.tsbuildinfo
+# Cloudflare secrets — never commit
+templates/app-skeleton/.dev.vars

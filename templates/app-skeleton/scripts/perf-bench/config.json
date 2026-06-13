@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "iterations": 20,
+  "routes": [
+    { "path": "/", "budgetP95Ms": 1500 },
+    { "path": "/api/hello", "budgetP95Ms": 200 },
+    { "path": "/perf", "budgetP95Ms": 1500 }
+  ]
+}

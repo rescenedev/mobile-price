@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "perf:bench": "node scripts/perf-bench/run.mjs"
   },
   "dependencies": {
     "drizzle-orm": "^0.38.0",

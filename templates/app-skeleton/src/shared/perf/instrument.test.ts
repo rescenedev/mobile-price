@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { trackFetch } from './instrument';
 import type { IPerfSample, IPerfSink } from './types';
 

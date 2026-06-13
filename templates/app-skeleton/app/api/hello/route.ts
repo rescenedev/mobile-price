@@ -3,7 +3,7 @@ import { createEnvAccessor } from '@/shared/env';
 import { createAnalyticsEngineSink } from '@/shared/perf/sink';
 import { trackFetch } from '@/shared/perf/instrument';
 
-export async function GET(request: Request) {
+export async function GET() {
   const { env } = getCloudflareContext();
   const accessor = createEnvAccessor(env as CloudflareEnv);
   const sink = createAnalyticsEngineSink(accessor.get('PERF'));

@@ -8,3 +8,12 @@ Next.js + Cloudflare AI Agent Harness. 아이디어→배포까지 풀스택 Nex
 - `.claude/skills/` — orchestrate 외 스킬 (Plan 2-3)
 - `templates/app-skeleton/` — 생성앱 스타터 (Plan 1, 4)
 - `_workspace/` — 에이전트 간 블랙보드 (Plan 2)
+
+## app-skeleton 검증
+```bash
+cd templates/app-skeleton
+npm install
+npm run typecheck && npm run test && npm run build
+npx opennextjs-cloudflare build   # Workers 번들 생성
+```
+배포는 D1/KV/R2 리소스 생성 + wrangler.toml의 PLACEHOLDER id 교체 후 `npm run deploy`.

@@ -3,7 +3,7 @@ import { createEnvAccessor } from '@/shared/env';
 import { createAnalyticsEngineSink } from '@/shared/perf/sink';
 import { readAeConfig, queryRouteStats, type IRouteStat } from '@/shared/perf/ae-query';
 
-export const runtime = 'edge';
+// OpenNext(Cloudflare)는 Worker 자체가 엣지에서 실행되므로 라우트별 edge runtime을 쓰지 않는다.
 // 관측 데이터는 요청 시점 기준 — 캐시하지 않는다.
 export const dynamic = 'force-dynamic';
 

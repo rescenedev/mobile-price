@@ -5,8 +5,7 @@ import { createAnalyticsEngineVitalsSink } from '@/shared/perf/vitals-sink';
 import { trackFetch } from '@/shared/perf/instrument';
 import { vitalsPayloadSchema } from '@/shared/perf/vitals-schema';
 
-export const runtime = 'edge';
-
+// OpenNext(Cloudflare)는 Worker 자체가 엣지에서 실행되므로 라우트별 edge runtime을 쓰지 않는다.
 const ROUTE = '/api/vitals';
 
 export async function POST(request: Request): Promise<Response> {

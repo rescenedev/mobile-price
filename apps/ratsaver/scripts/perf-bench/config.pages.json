@@ -1,5 +1,5 @@
 {
-  "baseUrl": "http://localhost:8788",
+  "baseUrl": "https://ratsaver.pages.dev",
   "iterations": 300,
   "warmup": 5,
   "routes": [

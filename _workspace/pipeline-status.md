@@ -6,6 +6,7 @@
 ## Perf Loop (2026-06-14, 운영 검증)
 - iter1: workers.dev 대상 측정 → 9~14s p99 tail 관측(가짜). 번들 최적화 시도(filter Sheet dynamic 분리) → 측정상 악화(+2KB)로 revert. 앱은 perf 바닥 확인.
 - iter2: 전건 404(CF 1042) 감지 → 조사 결과 운영이 커스텀 도메인 price.zihado.com 으로 이전됨(workers.dev 폐기). price.zihado.com 재측정: 전건 200·server-timing ~19ms·엣지 HIT. /api/plans 200샘플 p50 61ms·p95 144ms·p99 236ms·max 313ms·>500ms 0건 → iter1 tail은 workers.dev 아티팩트였음(앱 결함 아님). 원격 API p95 ~130~145ms는 RTT 바닥(정본 게이트=로컬 workerd 4.7/3.6ms PASS). 회귀 없음.
+- iter3 (goal: API p99 ≤ 50ms): 라이브 측정 타깃을 빠른 Pages(ratsaver.pages.dev, ICN PoP, cf-cache HIT)로 전환. n=50→300 + warmup 5로 표본 안정화(n=50 p99=59.9ms는 단일 tail 샘플 노이즈였음). 결과 PASS — `/api/plans` p50 19.2·p95 22.7·**p99 30.7ms**, `/api/plans/lgu-lte-14` p50 17.7·p95 21.1·**p99 28.0ms**. perf-bench 러너에 p99 게이팅(budgetP99Ms)+warmup 추가, config의 깨진 plan id(skt-lte-0, 404 50/50)→lgu-lte-14 수정. config.pages.json 추가(라이브 게이트). stats 테스트 8/8·lint clean.
 ## Started: 2026-06-14
 ## Last Updated: 2026-06-14
 

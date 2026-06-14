@@ -30,8 +30,10 @@ const timeOnce = async (url) => {
   }
 };
 
-const benchRoute = async (baseUrl, route, iterations) => {
+const benchRoute = async (baseUrl, route, iterations, warmup) => {
   const url = joinUrl(baseUrl, route.path);
+  // warmup: 커넥션/엣지 캐시 워밍 — 첫 콜드 샘플이 p99 tail을 오염시키지 않게 측정에서 제외.
+  for (let i = 0; i < warmup; i += 1) await timeOnce(url);
   const durations = [];
   let failures = 0;
   for (let i = 0; i < iterations; i += 1) {
@@ -40,9 +42,10 @@ const benchRoute = async (baseUrl, route, iterations) => {
     durations.push(r.ms);
   }
   const stats = summarize(durations);
-  const budget = route.budgetP95Ms ?? Infinity;
-  const pass = stats.p95 <= budget && failures === 0;
-  return { path: route.path, stats, budget, failures, pass };
+  const budgetP95 = route.budgetP95Ms ?? Infinity;
+  const budgetP99 = route.budgetP99Ms ?? Infinity;
+  const pass = stats.p95 <= budgetP95 && stats.p99 <= budgetP99 && failures === 0;
+  return { path: route.path, stats, budgetP95, budgetP99, failures, pass };
 };
 
 const fmt = (n) => `${n.toFixed(1)}ms`;
@@ -56,16 +59,17 @@ const renderReport = (results, baseUrl) => {
     `- Generated: ${new Date().toISOString()}`,
     `- Result: ${allPass ? '✅ PASS' : '❌ FAIL'}`,
     '',
-    '| Route | Status | p50 | p95 | p99 | Budget(p95) | Fails |',
-    '|-------|--------|-----|-----|-----|-------------|-------|',
+    '| Route | Status | p50 | p95 | p99 | Budget(p95) | Budget(p99) | Fails |',
+    '|-------|--------|-----|-----|-----|-------------|-------------|-------|',
   ];
   for (const r of results) {
     const status = r.pass ? '✅ PASS' : '❌ FAIL';
-    const budget = r.budget === Infinity ? '—' : `${r.budget}ms`;
+    const bP95 = r.budgetP95 === Infinity ? '—' : `${r.budgetP95}ms`;
+    const bP99 = r.budgetP99 === Infinity ? '—' : `${r.budgetP99}ms`;
     lines.push(
       `| \`${r.path}\` | ${status} | ${fmt(r.stats.p50)} | ${fmt(r.stats.p95)} | ${fmt(
         r.stats.p99,
-      )} | ${budget} | ${r.failures} |`,
+      )} | ${bP95} | ${bP99} | ${r.failures} |`,
     );
   }
   lines.push('');
@@ -79,18 +83,19 @@ const main = async () => {
   const config = JSON.parse(await readFile(configPath, 'utf8'));
   const baseUrl = process.env.BASE_URL ?? config.baseUrl;
   const iterations = Number(process.env.ITERATIONS ?? config.iterations ?? 20);
+  const warmup = Number(process.env.WARMUP ?? config.warmup ?? 5);
 
   if (!baseUrl) {
     console.error('BASE_URL이 필요합니다 (env 또는 config.baseUrl).');
     process.exit(2);
   }
 
-  console.log(`perf-bench: ${baseUrl} × ${iterations} iterations`);
+  console.log(`perf-bench: ${baseUrl} × ${iterations} iterations (warmup ${warmup})`);
   const results = [];
   for (const route of config.routes ?? []) {
     process.stdout.write(`  probing ${route.path} ... `);
-    const r = await benchRoute(baseUrl, route, iterations);
-    console.log(`p95=${fmt(r.stats.p95)} ${r.pass ? 'PASS' : 'FAIL'}`);
+    const r = await benchRoute(baseUrl, route, iterations, warmup);
+    console.log(`p95=${fmt(r.stats.p95)} p99=${fmt(r.stats.p99)} ${r.pass ? 'PASS' : 'FAIL'}`);
     results.push(r);
   }
 

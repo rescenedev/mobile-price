@@ -65,3 +65,12 @@ npx opennextjs-cloudflare build   # Workers 번들 생성
 ```
 
 배포: D1/KV/R2 리소스 생성 + `wrangler.toml`의 PLACEHOLDER id 교체 후 `npm run deploy`.
+
+## 기여 & 보안
+
+- 기여 가이드: [`CONTRIBUTING.md`](CONTRIBUTING.md) (커밋 규칙 · Hard Threshold 게이트)
+- 보안 신고: [`SECURITY.md`](SECURITY.md)
+
+## License
+
+[MIT](LICENSE) © rescenedev

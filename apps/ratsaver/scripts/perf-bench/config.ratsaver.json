@@ -1,0 +1,8 @@
+{
+  "baseUrl": "http://localhost:8788",
+  "iterations": 50,
+  "routes": [
+    { "path": "/api/plans", "budgetP95Ms": 120 },
+    { "path": "/api/plans/skt-lte-0", "budgetP95Ms": 100 }
+  ]
+}

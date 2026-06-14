@@ -1,25 +1,31 @@
-name = "app-skeleton"
+name = "ratsaver"
 main = ".open-next/worker.js"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 
+# ratsaver — 휴대폰 요금제 비교 공개 웹 (무인증·읽기전용)
+# 활성 바인딩: DB(D1 plan 시드) · CACHE(KV read-through) · PERF(AE 관측)
+# 미사용 바인딩: SESSION(KV)·BUCKET(R2) — 스켈레톤 일관성 위해 선언 유지, 코드 미참조 (arch/bindings.md)
+
 [[d1_databases]]
 binding = "DB"
-database_name = "app-skeleton-db"
+database_name = "ratsaver-db"
 database_id = "PLACEHOLDER_D1_ID"
 
 [[kv_namespaces]]
 binding = "CACHE"
 id = "PLACEHOLDER_KV_CACHE_ID"
 
+# 미사용(무인증) — 유지만
 [[kv_namespaces]]
 binding = "SESSION"
 id = "PLACEHOLDER_KV_SESSION_ID"
 
+# 미사용(에셋 업로드 없음) — 유지만
 [[r2_buckets]]
 binding = "BUCKET"
-bucket_name = "app-skeleton-assets"
+bucket_name = "ratsaver-assets"
 
 [[analytics_engine_datasets]]
 binding = "PERF"
-dataset = "app_skeleton_perf"
+dataset = "ratsaver_perf"

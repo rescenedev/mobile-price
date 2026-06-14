@@ -1,0 +1,21 @@
+# 프로버 cron 워커 — OpenNext 메인 워커와 분리된 독립 배포.
+# 배포: cd workers/prober && wrangler deploy
+name = "app-skeleton-prober"
+main = "worker.ts"
+compatibility_date = "2024-12-30"
+compatibility_flags = ["nodejs_compat"]
+
+# 스케줄: 5분마다 능동 스캔
+[triggers]
+crons = ["*/5 * * * *"]
+
+# 프로빙 대상. 실제 배포 URL로 교체.
+# FOLLOW-UP: BASE_URL을 실제 배포 도메인으로 설정해야 프로빙이 동작한다.
+[vars]
+BASE_URL = "https://example.com"
+ROUTES = "/,/api/hello"
+
+# Analytics Engine — 메인 앱과 동일 dataset을 가리켜야 /perf에서 함께 집계된다.
+[[analytics_engine_datasets]]
+binding = "PERF"
+dataset = "app_skeleton_perf"

@@ -1,0 +1,23 @@
+CREATE TABLE `plans` (
+	`id` text PRIMARY KEY NOT NULL,
+	`carrier` text NOT NULL,
+	`network` text NOT NULL,
+	`tech` text NOT NULL,
+	`mvno` integer NOT NULL,
+	`name` text NOT NULL,
+	`data_gb` real,
+	`data_unlimited` integer NOT NULL,
+	`throttle_kbps` integer,
+	`call_unlimited` integer NOT NULL,
+	`call_minutes` integer,
+	`sms_unlimited` integer NOT NULL,
+	`sms_count` integer,
+	`monthly_price` integer NOT NULL,
+	`regular_price` integer NOT NULL,
+	`promo_months` integer NOT NULL,
+	`contract` text NOT NULL,
+	`signup_type` text NOT NULL,
+	`gift_count` integer NOT NULL,
+	`notes` text,
+	`last_verified_at` text NOT NULL
+);

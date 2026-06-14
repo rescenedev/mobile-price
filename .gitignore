@@ -1,6 +1,7 @@
 node_modules/
 .next/
 .open-next/
+.vercel/
 .wrangler/
 dist/
 *.log
@@ -12,6 +13,7 @@ coverage/
 # Cloudflare secrets — never commit
 templates/app-skeleton/.dev.vars
 # wrangler-generated runtime types
-templates/app-skeleton/worker-configuration.d.ts
+worker-configuration.d.ts
 # next-generated
 next-env.d.ts
+.gstack/

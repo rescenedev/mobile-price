@@ -1,0 +1,8 @@
+{
+  "baseUrl": "https://ratsaver.zihado.workers.dev",
+  "iterations": 60,
+  "routes": [
+    { "path": "/api/plans", "budgetP95Ms": 120 },
+    { "path": "/api/plans/lgu-lte-14", "budgetP95Ms": 100 }
+  ]
+}

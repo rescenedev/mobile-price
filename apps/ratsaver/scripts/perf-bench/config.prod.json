@@ -1,0 +1,13 @@
+{
+  "baseUrl": "https://price.zihado.com",
+  "iterations": 50,
+  "routes": [
+    { "path": "/api/plans", "budgetP95Ms": 120 },
+    { "path": "/api/plans/lgu-lte-14", "budgetP95Ms": 100 },
+    { "path": "/", "budgetP95Ms": 1500 },
+    { "path": "/plans/lgu-lte-14", "budgetP95Ms": 1200 },
+    { "path": "/compare", "budgetP95Ms": 1500 },
+    { "path": "/recommend", "budgetP95Ms": 1500 },
+    { "path": "/calculator", "budgetP95Ms": 1500 }
+  ]
+}

@@ -1,0 +1,26 @@
+name = "ratsaver"
+pages_build_output_dir = ".vercel/output/static"
+compatibility_date = "2024-12-30"
+# nodejs_compat: Node API 호환(Pages Functions). next-on-pages 런타임 필수.
+compatibility_flags = ["nodejs_compat"]
+
+# ratsaver — 휴대폰 요금제 비교 공개 웹 (무인증·읽기전용)
+# 플랫폼: Cloudflare Pages(@cloudflare/next-on-pages). 이 네트워크에서 Pages 대역은 ICN(서울) PoP로
+# 라우팅되어 종단 RTT 8-10ms → 무료로 <50ms 달성(Workers 대역 NRT/HKG 대비). arch/rendering-matrix.md.
+#
+# 활성 바인딩: DB(D1 plan 시드) · CACHE(KV read-through) · PERF(AE 관측).
+# 정적 에셋(/data/plans.json·폰트)은 Pages가 자동 서빙(바인딩 불요). SSG 페이지도 정적 산출물로 서빙.
+# DB/CACHE id는 기존 Worker 배포 리소스 재사용(remote D1 이미 시드됨).
+
+[[d1_databases]]
+binding = "DB"
+database_name = "ratsaver-db"
+database_id = "596a0c3d-3334-434d-a0da-1488ede7b629"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "6f2e76edc9bf4093a9a62ed24bd3c080"
+
+[[analytics_engine_datasets]]
+binding = "PERF"
+dataset = "ratsaver_perf"
